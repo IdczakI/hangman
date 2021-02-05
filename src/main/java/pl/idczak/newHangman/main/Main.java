@@ -1,22 +1,23 @@
 package pl.idczak.newHangman.main;
 
-import pl.idczak.newHangman.model.Preparer;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
 
     public static void main(String[] args) {
+        launch(args);
+    }
 
-        Preparer preparer = new Preparer();
-
-        System.out.println(preparer.getPasswordsQueue());
-
-        System.out.println(preparer.getFirstPassword());
-        preparer.createCodedPassword();
-        System.out.println(preparer.getCodedPassword());
-        System.out.println(preparer.getFirstPassword());
-        System.out.println(preparer.getFirstPassword());
-        System.out.println(preparer.getFirstPassword());
-        System.out.println(preparer.getFirstPassword());
-
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        VBox pane = FXMLLoader.load(getClass().getResource("/fxml/mainPane.fxml"));
+        Scene scene = new Scene(pane);
+        primaryStage.setTitle("The Hangman Game");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
