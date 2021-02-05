@@ -7,12 +7,36 @@ import java.util.*;
 public class Game {
 
     PasswordsData data = new PasswordsData();
-    private final Queue<String> passwordsQueue = new LinkedList<>(data.getPasswordsList());
+    private Queue<String> passwordsQueue = new LinkedList<>(data.getPasswordsList());
     private String password;
     private String codedPassword;
     private String guessingPassword = codedPassword;
     private Set<String> previouslyUsedLetters = new HashSet<>();
     private int errorCounter;
+    public static final int MAX_MISTAKES = 8;
+
+    public String getResetText() {
+        return """
+                Welcome to the Hangman Game!
+                You must guess the password to win.
+                You can make a mistake a limited number of times, that is enter a letter that is not in the password.
+                When you supply the letter you entered earlier it will be ignored.
+                Click the New Game button to start.
+                If you know the password, enter it completely.When you click New Game Button again, before guessing the password you will lose the round.
+                Passwords are in Polish.""";
+    }
+
+    public String getNewGameText() {
+        return "Let's start.\n\n";
+    }
+
+    public String getNewPasswordText() {
+        return "Here is the new password. Enter a letter and confirm with Enter Letter button.";
+    }
+
+    public void resetPasswordQueue() {
+        passwordsQueue = new LinkedList<>(data.getPasswordsList());
+    }
 
     public int getErrorCounter() {
         return errorCounter;
@@ -23,7 +47,6 @@ public class Game {
     }
 
     public String getPassword() {
-        createFirstPassword();
         return password;
     }
 
@@ -40,7 +63,7 @@ public class Game {
         return guessingPassword;
     }
 
-    private void createFirstPassword() {
+    public void createFirstPassword() {
         password = passwordsQueue.poll();
     }
 
@@ -49,25 +72,28 @@ public class Game {
         for (int i = 0; i < password.length(); i++) {
             if (password.charAt(i) == ' ')
                 builder.append(" ");
-            else builder.append("_");
+            else builder.append("*");
         }
         codedPassword = builder.toString();
     }
 
     public void guessPassword(String letter) {
-        StringBuilder builder = new StringBuilder();
-        if (letter.equals(password))
-            guessingPassword = password;
-        else {
-            boolean added = previouslyUsedLetters.add(letter);
-            for (int i = 0; i < password.length(); i++) {
-                if (letter.charAt(0) == (password.charAt(i)))
-                    builder.append(password.charAt(i));
-                else builder.append(guessingPassword.charAt(i));
+        if (letter.length() > 0) {
+            StringBuilder builder = new StringBuilder();
+            if (letter.equals(password))
+                guessingPassword = password;
+            else {
+                boolean added = previouslyUsedLetters.add(letter);
+                for (int i = 0; i < password.length(); i++) {
+                    if (letter.charAt(0) == (password.charAt(i))) {
+                        builder.append(password.charAt(i));
+                    }
+                    else builder.append(guessingPassword.charAt(i));
+                }
+                if (builder.toString().equals(guessingPassword) && added)
+                    errorCounter += 1;
+                guessingPassword = builder.toString();
             }
-            if (builder.toString().equals(guessingPassword) && added)
-                errorCounter += 1;
-            guessingPassword = builder.toString();
         }
 
     }
