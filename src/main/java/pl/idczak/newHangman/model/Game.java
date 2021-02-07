@@ -12,17 +12,19 @@ public class Game {
     private String codedPassword;
     private String guessingPassword = codedPassword;
     private Set<String> previouslyUsedLetters = new HashSet<>();
-    private int errorCounter;
+    private int mistakeCounter;
+    private int winCounter;
+    private int lossCounter;
     public static final int MAX_MISTAKES = 8;
 
-    public String getResetText() {
+    public String getStartText() {
         return """
                 Welcome to the Hangman Game!
                 You must guess the password to win.
                 You can make a mistake a limited number of times, that is enter a letter that is not in the password.
                 When you supply the letter you entered earlier it will be ignored.
                 Click the New Game button to start.
-                If you know the password, enter it completely.When you click New Game Button again, before guessing the password you will lose the round.
+                If you know the password, enter it completely.
                 Passwords are in Polish.""";
     }
 
@@ -31,15 +33,44 @@ public class Game {
     }
 
     public String getNewPasswordText() {
-        return "Here is the new password. Enter a letter and confirm with Enter Letter button.";
+        return "Here is the new password. Enter a letter and confirm with the Enter Letter button.";
+    }
+
+    public String getWinText() {
+        return "Congratulations! You won! \n\n Click the New Game button to generate a new password. ";
+    }
+
+    public String getLossText() {
+        return "You lost. \n\nUnfortunately you entered the wrong letter more than " + MAX_MISTAKES + " times.\n\n" +
+                "You can generate a new password by clicking the New Game button.";
+    }
+
+    public int getWinCounter() {
+        return winCounter;
+    }
+
+    public int getLossCounter() {
+        return lossCounter;
+    }
+
+    public void setWinCounter(int winCounter) {
+        this.winCounter = winCounter;
+    }
+
+    public void setLossCounter(int lossCounter) {
+        this.lossCounter = lossCounter;
+    }
+
+    public void setMistakeCounter(int mistakeCounter) {
+        this.mistakeCounter = mistakeCounter;
     }
 
     public void resetPasswordQueue() {
         passwordsQueue = new LinkedList<>(data.getPasswordsList());
     }
 
-    public int getErrorCounter() {
-        return errorCounter;
+    public int getMistakeCounter() {
+        return mistakeCounter;
     }
 
     public Queue<String> getPasswordsQueue() {
@@ -54,8 +85,7 @@ public class Game {
         if (password != null)
             createCodedPassword();
         else codedPassword = "";
-        if (guessingPassword == null)
-            guessingPassword = codedPassword;
+        guessingPassword = codedPassword;
         return codedPassword;
     }
 
@@ -87,14 +117,14 @@ public class Game {
                 for (int i = 0; i < password.length(); i++) {
                     if (letter.charAt(0) == (password.charAt(i))) {
                         builder.append(password.charAt(i));
-                    }
-                    else builder.append(guessingPassword.charAt(i));
+                    } else builder.append(guessingPassword.charAt(i));
                 }
                 if (builder.toString().equals(guessingPassword) && added)
-                    errorCounter += 1;
+                    mistakeCounter += 1;
                 guessingPassword = builder.toString();
             }
         }
-
     }
+
+
 }
