@@ -24,8 +24,9 @@ public class PasswordsData {
     }
 
     private void createPasswordsList() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             passwordsList = reader.lines()
+                    .map(String::toUpperCase)
                     .collect(Collectors.toCollection(LinkedList::new));
         } catch (IOException e) {
             System.out.println("file error");

@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         VBox pane = FXMLLoader.load(getClass().getResource("/fxml/mainPane.fxml"));
         Scene scene = new Scene(pane);
-        primaryStage.setTitle("The Hangman Game");
+        primaryStage.setTitle("The New Hangman");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

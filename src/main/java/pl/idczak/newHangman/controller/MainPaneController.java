@@ -9,12 +9,13 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import pl.idczak.newHangman.model.Game;
+import pl.idczak.newHangman.model.TextModel;
 
 import java.io.IOException;
 
 public class MainPaneController {
 
-    Game game = new Game();
+    TextModel game = new TextModel();
     private boolean gameStarted = false;
 
     @FXML
@@ -94,7 +95,7 @@ public class MainPaneController {
 
     private void enterLetterOperation(ActionEvent event) {
         if (gameStarted) {
-            game.guessPassword(playerTextField.getText());
+            game.guessPassword(playerTextField.getText().toUpperCase());
             mainTextArea.setText(game.getNewPasswordText());
             passwordTextField.setText(game.getGuessingPassword());
             playerTextField.clear();
@@ -124,6 +125,10 @@ public class MainPaneController {
         playerTextField.requestFocus();
         game.setMistakeCounter(0);
         mistakesLabel.setText(String.valueOf(game.getMistakeCounter()));
+        if (game.getPassword() == null){
+            gameStarted = false;
+            mainTextArea.setText(game.noMorePasswordsText());
+        }
     }
     private void aboutItemOperation(){
         aboutMenuItem.setOnAction(event -> {

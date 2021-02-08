@@ -1,0 +1,73 @@
+.button {
+    -fx-background-color: yellow;
+    -fx-border-color: black;
+    -fx-font-size: 13px;
+    -fx-font-family: Cambria;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 3px 3px 3px 3px;
+}
+
+.label {
+    -fx-font-family: Cambria;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.gridPane {
+    -fx-background-color: black;
+}
+
+.separator:horizontal {
+    -fx-background-color: yellow;
+    -fx-border-color: yellow;
+}
+
+.menu-bar {
+    -fx-background-color: yellow;
+    -fx-border-color: black;
+}
+
+.menu-bar .container .menu:openvertically .label {
+    -fx-text-fill: black;
+}
+
+.context-menu {
+    -fx-background-color: yellow;
+}
+
+.button:hover {
+    -fx-background-color: red;
+    -fx-text-fill: yellow;
+}
+
+.menu:hover,
+.menu-item:hover,
+.menu:showing {
+    -fx-background-color: red;
+}
+
+.text-area .scroll-pane .viewport .content,
+.text-area .scroll-pane {
+    -fx-background-color: black;
+}
+
+.text-area {
+    -fx-text-fill: white;
+    -fx-font-family: Cambria;
+    -fx-font-size: 15px;
+}
+
+#passwordField {
+    -fx-font-size: 15px;
+    -fx-font-family: AIGDT;
+    -fx-background-color: yellow;
+}
+
+#userField{
+    -fx-font-family: Cambria;
+    -fx-font-size: 13px;
+
+
+
+}

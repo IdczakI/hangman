@@ -15,35 +15,7 @@ public class Game {
     private int mistakeCounter;
     private int winCounter;
     private int lossCounter;
-    public static final int MAX_MISTAKES = 8;
-
-    public String getStartText() {
-        return """
-                Welcome to the Hangman Game!
-                You must guess the password to win.
-                You can make a mistake a limited number of times, that is enter a letter that is not in the password.
-                When you supply the letter you entered earlier it will be ignored.
-                Click the New Game button to start.
-                If you know the password, enter it completely.
-                Passwords are in Polish.""";
-    }
-
-    public String getNewGameText() {
-        return "Let's start.\n\n";
-    }
-
-    public String getNewPasswordText() {
-        return "Here is the new password. Enter a letter and confirm with the Enter Letter button.";
-    }
-
-    public String getWinText() {
-        return "Congratulations! You won! \n\n Click the New Game button to generate a new password. ";
-    }
-
-    public String getLossText() {
-        return "You lost. \n\nUnfortunately you entered the wrong letter more than " + MAX_MISTAKES + " times.\n\n" +
-                "You can generate a new password by clicking the New Game button.";
-    }
+    public static final int MAX_MISTAKES = 3;
 
     public int getWinCounter() {
         return winCounter;
@@ -73,11 +45,7 @@ public class Game {
         return mistakeCounter;
     }
 
-    public Queue<String> getPasswordsQueue() {
-        return passwordsQueue;
-    }
-
-    public String getPassword() {
+     public String getPassword() {
         return password;
     }
 
@@ -102,7 +70,7 @@ public class Game {
         for (int i = 0; i < password.length(); i++) {
             if (password.charAt(i) == ' ')
                 builder.append(" ");
-            else builder.append("*");
+            else builder.append("\u2370");
         }
         codedPassword = builder.toString();
     }

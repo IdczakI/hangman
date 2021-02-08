@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<VBox stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.idczak.newHangman.controller.MainPaneController">
     <MenuBar>
         <Menu mnemonicParsing="false" text="File">
@@ -33,11 +33,11 @@
             <Cursor fx:constant="N_RESIZE"/>
         </cursor>
     </TextArea>
-    <TextField fx:id="passwordTextField" editable="false"/>
-    <GridPane>
+    <TextField id="passwordField" fx:id="passwordTextField" alignment="CENTER" editable="false"/>
+    <GridPane styleClass="gridPane">
         <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" maxWidth="250.0" minWidth="10.0" prefWidth="250.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="250.0"/>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="250.0"/>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="250.0"/>
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
@@ -52,8 +52,8 @@
         <Label text="Allowable number of mistakes:" GridPane.rowIndex="2"/>
         <Label text="Number of games won:" GridPane.rowIndex="4"/>
         <Label text="Number of games lost: " GridPane.rowIndex="5"/>
-        <TextField fx:id="playerTextField" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1"
-                   GridPane.hgrow="ALWAYS"/>
+        <TextField id="userField" fx:id="playerTextField" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308"
+                   GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
         <Label fx:id="mistakesLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="RIGHT"
                GridPane.rowIndex="1"/>
         <Label fx:id="allowableMistakesLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="RIGHT"
@@ -64,9 +64,10 @@
         <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
     </GridPane>
     <HBox>
-        <Button fx:id="newGameButton" mnemonicParsing="false" prefWidth="75.0" text="New Game" HBox.hgrow="ALWAYS"/>
-        <Button fx:id="enterLetterButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="150.0"
-                text="Enter Letter"/>
+        <Button fx:id="newGameButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New Game"
+                HBox.hgrow="ALWAYS"/>
+        <Button fx:id="enterLetterButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Enter Letter"
+                HBox.hgrow="ALWAYS"/>
         <Button fx:id="resetButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Reset"
                 HBox.hgrow="ALWAYS"/>
         <Button fx:id="exitButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Exit"
