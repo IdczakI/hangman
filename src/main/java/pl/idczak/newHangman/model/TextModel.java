@@ -35,4 +35,8 @@ public class TextModel extends Game{
     public String noMorePasswordsText(){
         return "We are sorry.\nThere is no more passwords left. Press the Reset button to start over.";
     }
+
+    public String noSourceFileText(){
+        return "We are sorry. There is no source file.";
+    }
 }

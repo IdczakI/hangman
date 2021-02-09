@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Game {
 
-    PasswordsData data = new PasswordsData();
+    public PasswordsData data = new PasswordsData();
     private Queue<String> passwordsQueue = new LinkedList<>(data.getPasswordsList());
     private String password;
     private String codedPassword;
@@ -15,7 +15,7 @@ public class Game {
     private int mistakeCounter;
     private int winCounter;
     private int lossCounter;
-    public static final int MAX_MISTAKES = 3;
+    public static final int MAX_MISTAKES = 5;
 
     public int getWinCounter() {
         return winCounter;
@@ -45,7 +45,7 @@ public class Game {
         return mistakeCounter;
     }
 
-     public String getPassword() {
+    public String getPassword() {
         return password;
     }
 

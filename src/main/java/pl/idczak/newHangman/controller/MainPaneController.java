@@ -77,7 +77,11 @@ public class MainPaneController {
         mainTextArea.setText(game.getStartText());
         playerTextField.setOnAction(this::enterLetterOperation);
         allowableMistakesLabel.setText(String.valueOf(Game.MAX_MISTAKES));
-
+        if (!game.data.file.exists()) {
+            mainTextArea.setText(game.noSourceFileText());
+            newGameButton.setOnAction(event -> mainTextArea.setText(game.noSourceFileText()));
+            resetButton.setOnAction(event -> mainTextArea.setText(game.noSourceFileText()));
+        }
     }
 
     private void resetOperation(ActionEvent event) {

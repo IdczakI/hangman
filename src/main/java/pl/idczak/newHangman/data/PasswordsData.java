@@ -1,6 +1,7 @@
 package pl.idczak.newHangman.data;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collections;
@@ -12,6 +13,7 @@ public class PasswordsData {
 
     private final static String FILE_NAME = "src/main/resources/csv/passwords.csv";
     private static List<String> passwordsList = new LinkedList<>();
+    public File file = new File(FILE_NAME);
 
 
     public List<String> getPasswordsList() {
@@ -24,7 +26,7 @@ public class PasswordsData {
     }
 
     private void createPasswordsList() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             passwordsList = reader.lines()
                     .map(String::toUpperCase)
                     .collect(Collectors.toCollection(LinkedList::new));
