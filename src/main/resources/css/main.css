@@ -1,6 +1,6 @@
 .button {
     -fx-background-color: yellow;
-    -fx-border-color: black;
+    -fx-border-color: #062743;
     -fx-font-size: 13px;
     -fx-font-family: Cambria;
     -fx-font-weight: bold;
@@ -15,7 +15,7 @@
 }
 
 .gridPane {
-    -fx-background-color: black;
+    -fx-background-color: #062743;
 }
 
 .separator:horizontal {
@@ -25,11 +25,11 @@
 
 .menu-bar {
     -fx-background-color: yellow;
-    -fx-border-color: black;
+    -fx-border-color: #062743;
 }
 
 .menu-bar .container .menu:openvertically .label {
-    -fx-text-fill: black;
+    -fx-text-fill: #062743;
 }
 
 .context-menu {
@@ -49,7 +49,7 @@
 
 .text-area .scroll-pane .viewport .content,
 .text-area .scroll-pane {
-    -fx-background-color: black;
+    -fx-background-color: #062743;
 }
 
 .text-area {
