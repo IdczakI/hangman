@@ -12,6 +12,7 @@ import pl.idczak.newHangman.model.Game;
 import pl.idczak.newHangman.model.TextModel;
 
 import java.io.IOException;
+import java.util.HashSet;
 
 public class MainPaneController {
 
@@ -129,6 +130,7 @@ public class MainPaneController {
         playerTextField.requestFocus();
         game.setMistakeCounter(0);
         mistakesLabel.setText(String.valueOf(game.getMistakeCounter()));
+        game.setPreviouslyUsedLetters(new HashSet<>());
         if (game.getPassword() == null){
             gameStarted = false;
             mainTextArea.setText(game.noMorePasswordsText());

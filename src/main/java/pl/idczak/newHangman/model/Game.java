@@ -17,6 +17,10 @@ public class Game {
     private int lossCounter;
     public static final int MAX_MISTAKES = 5;
 
+    public void setPreviouslyUsedLetters(Set<String> previouslyUsedLetters) {
+        this.previouslyUsedLetters = previouslyUsedLetters;
+    }
+
     public int getWinCounter() {
         return winCounter;
     }
